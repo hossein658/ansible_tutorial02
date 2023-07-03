@@ -1,0 +1,90 @@
+ansible all -m  ping 
+ansible all -m  --list-hosts
+ansible all -m gather_facts
+ansible all -m gather_facts   --limit      specific IP
+
+
+------------------------------------------
+
+install onc package in asnible
+ansible all -m apt -a name=vim-nox   --become --ask-become-pass  
+
+
+--------------------------------------------
+for install several package with ansible should use yaml  file;
+when if want to  install only ubuntu
+when if want to install  only ubuntu and debian(becuase both of them have apt)
+when if want to install centos with special version
+
+---
+
+- hosts: all
+  become: true
+  tasks:
+ 
+  - name: update repository index
+     apt:
+      update_cache: yes
+   - name: install apache2
+     apt:
+      name: apache2
+      state: latest
+     when: ansible_distribution == "Ubuntu"
+     when: ansible_distribution in ["Ubuntu", "Debian"]
+     when: ansible_distribution == "CentOS" and ansible_distribution_version ==
+"8.2"
+
+   - name: add php support for apache
+     apt:
+      name: libapache2-mod-php
+      state: latesti
+     when: ansible_distribution == "Ubuntu"
+     when: ansible_distribution in ["Ubuntu", "Debian"]
+     when: ansible_distribution == "CentOS" and ansible_distribution_version == "8.2"
+---------------------------------------------------
+
+if we want to install packege in several os(Ubuntu,CentOS) in one yaml file
+
+note:in centos os shouldd to run first  script
+sudo systemctl start httpd
+sudo firewall-cmd --add-port=80/tcp
+
+---
+
+- hosts: all
+  become: true
+  tasks:
+
+  - name: update repository index
+     apt:
+      update_cache: yes
+     when: ansible_distribution == "Ubuntu"
+
+  - name: install apache2
+     apt:
+      name: apache2
+      state: latest
+     when: ansible_distribution == "Ubuntu"
+
+   - name: add php support for apache
+     apt:
+      name: libapache2-mod-php
+      state: latesti
+     when: ansible_distribution == "Ubuntu"
+    - name: update repository index
+     dnf:
+      update_cache: yes
+     when: ansible_distribution == "CentOS"
+
+  - name: install apache2
+     dnf:
+      name: httpd
+      state: latest
+     when: ansible_distribution == "CentOS"
+
+   - name: add php support for apache
+     dnf:
+      name: php
+      state: latest
+     when: ansible_distribution == "CentOS"
+  
