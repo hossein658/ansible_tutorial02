@@ -11,10 +11,18 @@
      apt:
       name: apache2
       state: latest
-     when: ansible_distribution == "ubuntu"   
+     when: ansible_distribution == "Ubuntu"   
+     when: ansible_distribution in ["Ubuntu", "Debian"]  
+     when: ansible_distribution == "CentOS" and ansible_distribution_version ==
+"8.2"
+  
    - name: add php support for apache
      apt:
       name: libapache2-mod-php
       state: latesti
-     when: ansible_distribution == "ubuntu"
+     when: ansible_distribution == "Ubuntu"
+     when: ansible_distribution in ["Ubuntu", "Debian"]
+     when: ansible_distribution == "CentOS" and ansible_distribution_version == "8.2"
+
+
    
