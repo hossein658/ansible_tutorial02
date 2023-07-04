@@ -17,6 +17,28 @@
      update_cache: yes
     when: ansible_distribution ==  "Ubuntu"
 
+- hosts: all
+  become: true
+  tasks:
+  - name: create simon user 
+    tags: always
+    user:
+      name: simon
+      groups: root
+  - name: add sh key for simon
+    tags: always
+    authorized_key:
+      user: simon
+      key: "ssh_code"
+
+  - name: add sudoers file for simon
+    tags: always
+    copy: 
+      src: sudoer_simon
+      dest: /etc/sudoers.d/simon
+      owner: root
+      group: root
+      mode: 0440    
 - hosts: workstations
   become: true
   tasks:
