@@ -146,3 +146,8 @@ ip apache_package=httpd php_package=php (becuase it is centos)
 
 -------------------------
  ansible-playbook --list-tags site.yml
+if tage execute that it have centos word in tags . 
+ansible-playbook --tags centos --ask-become-pass site.yml
+ansible-playbook --tags "apache,db" --ask-become-pass site.yml
+
+
