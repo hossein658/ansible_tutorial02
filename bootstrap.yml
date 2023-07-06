@@ -29,7 +29,7 @@
     tags: always
     authorized_key:
       user: simon
-      key: "ssh_code"
+      key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDe29A9401v0yo3M7G53cxniYML+7dUMD7rfZQNSggJ1eshHDjo3EViVxeuiKEcECwH98E+LF5qTRcteXYrhFwhY74BmnZ5el5rYRQgy3PQ9ulCmFgQjpHIzPdyy97FtQOt4gV5+bGEWm8exTya5lKZAT+3OnqpoTKQRsEfF6U4Q44y18MNqyzAHhN2m2pzzCqQuDEAU5AeHJ+5S+fATES/ITFCaP4o7R6lS1OKxqV1rgwtRUFMOXqnT9I8pFvdA1IddDrQ+zdlq9xQv/ku3G/dbyIrhUysxYauppt/GcGV1r8ftzTjKwUud3Avg8EGfr9+TPTopzpJwpfP2UaJKsx3Hla9dMhuqzkpHiiFOR4awfh2elgJz5zT3Ui/VZaRU1ZmlaUZNujlu+vGg5aF5LSUmFI2SsE4zuGPjcwC/Wfdb96eA1VeyS51KjXrwh4WsjZDttiJ8LsTaXIZRTN1Mmkz8qldnKt3aTvhYt6jokxcIpFN6uhH1MPH25wOC5+62eE= ubuntu@ip-172-31-37-84"
 
   - name: add sudoers file for simon
     tags: always
